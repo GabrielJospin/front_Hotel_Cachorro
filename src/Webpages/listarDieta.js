@@ -6,42 +6,41 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Row from 'react-bootstrap/Row'
 
 
-const ListarFuncionario = () => {
+const ListarDieta = () => {
 
-  const [funcionarios, setFunc] = useState([]);
+  const [dieta, setFunc] = useState([]);
 
-  const fetchFuncionario = () => {
+  const fetchDieta = () => {
     api
-    .get("/funcionario")
+    .get("/dieta")
     .then((response) =>  setFunc(response.data))
     .catch((err) => {
       console.error("ops! ocorreu um erro" + err);
     });
   }
 
-  useEffect(fetchFuncionario, []);
+  useEffect(fetchDieta, []);
 
-  if (!funcionarios) return null;
+  if (!dieta) return null;
 
   return(
     <div>
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
-        <h1 style={{width: '90vw'}}>Funcionários</h1>
+        <h1 style={{width: '90vw'}}>Dietas</h1>
       </div>
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
         <div style={{width: '90vw', marginBottom: '15px'}}>
           <ListGroup>
-          {funcionarios.map(funcionario =>
+          {dieta.map(dieta =>
           <ListGroup.Item>
             <Container>
               <Row>
                 <Col>
-                  <p>{funcionario.nome_func} {funcionario.sobrenome_func}</p>
-                  <p>Cargo: {funcionario.cargo}</p>
+                  <p>{dieta.comida}</p>
                 </Col>
                 <Col style={{display: 'flex', justifyContent:'center', flexDirection: 'column'}}>
-                <p>Data de admissão: {funcionario.data_admissao}</p>
-                  <p>CPF: {funcionario.cpf_func}</p>
+                <p>Frequencia: {dieta.frequencia}</p>
+                  <p>Restricoes: {dieta.restricoes}</p>
                 </Col>
               </Row>
             </Container>
@@ -54,4 +53,4 @@ const ListarFuncionario = () => {
   );
 }
 
-export default ListarFuncionario;
+export default ListarDieta;

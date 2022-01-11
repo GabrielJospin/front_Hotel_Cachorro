@@ -8,31 +8,30 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { LinkContainer } from 'react-router-bootstrap';
 
-class NovoFuncionario extends Component {
+class NovoDono extends Component {
   state = {
-    nome: '',
-    sobrenome: '',
-    cargo: '',
-    idSuper: 0,
-    data_admissao: '',
-    cpf: '',
+    nome_cli: '',
+    sobrenome_cli: '',
+    data_nascimento: '',
+    endereco_id: 0,
+    cpf_cliente: ' ',
+    telefone: ' ',
+    contato_emergencia: ' ',
     enviado: false,
-    resposta: '',
-    salario: 'R$ 00,00',
+    resposta: ' ',
     erro: false
   }
 
   sendFunc = (e) => {
     e.preventDefault();
     api.post("/insert/clt", {
-      nome: this.state.nome,
-      sobrenome: this.state.sobrenome,
-      cargo: this.state.cargo,
-      supervisor_id: this.state.idSuper,
-      data_admissao: this.state.data_admissao,
-      franquia_id: 1,
-      cpf: this.state.cpf,
-      salario: this.state.salario
+      nome_cli: this.state.nome_cli,
+      sobrenome_cli: this.state.sobrenome_cli,
+      data_nascimento: this.state.data_nascimento,
+      cpf_cliente: this.state.cpf_cliente,
+      telefone: this.state.telefone,
+      contato_emergencia: this.state.contato_emergencia,
+
     }).then((response) =>
       this.setState({
         enviado: true,
@@ -48,67 +47,60 @@ class NovoFuncionario extends Component {
       })
     })
   }
-  
-  handleValor = e => {
-    this.setState({
-      salario: "R$ "+ e.target.value
-    })
-  }
+
 
   handleNome = event => {
     this.setState({
-      nome: event.target.value
+      nome_cli: event.target.value
     })
   }
 
-  handleSobrenome = event => {
+  handleSobrenomeNome = event => {
     this.setState({
-      sobrenome: event.target.value
-    })
-  }
-
-  handleCargo = event => {
-    this.setState({
-      cargo: event.target.value
-    })
-  }
-
-  handleId = event => {
-    this.setState({
-      idSuper: parseInt(event.target.value)
+      sobrenome_cli: event.target.value
     })
   }
 
   handleData = event => {
     this.setState({
-      data_admissao: event.target.value
+      data_nascimento: event.target.value
     })
   }
-
   handleCPF = event => {
-    this.setState({
-      cpf: event.target.value
-    })
-  }
+      this.setState({
+        cpf_cliente: event.target.value
+      })
+    }
+  handleTel = event => {
+      this.setState({
+        telefone: event.target.value
+      })
+    }
+  handleContato = event => {
+      this.setState({
+        contato_emergencia: event.target.value
+      })
+    }
+
+
 
   render() {
     return(
       <div>
           <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
-            <h1 style={{width: '90vw'}}>Inserir novo funcionário</h1>
+            <h1 style={{width: '90vw'}}>Inserir novo Dono</h1>
           </div>
         <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
           {(this.state.enviado && !this.state.erro) && 
             <div>
               <Card style={{ width: '90vw' }}>
                 <Card.Body>
-                  <Card.Title>Seu funcionário foi adicionado!</Card.Title>
+                  <Card.Title>Seu Dono foi adicionado!</Card.Title>
                   <Card.Text>
-                    Nome: {this.state.nome} {this.state.sobrenome} <br />
-                    {this.state.cargo}
+                    Nome: {this.state.nome}
                   </Card.Text>
-                  <LinkContainer to="/funcionarios">
-                    <Card.Link>Ver todos os funcionários</Card.Link>
+                  <LinkContainer to="/dono">
+                    <Card.Link>Ver todos os Donos</Card.Link>
                   </LinkContainer>
                 </Card.Body>
               </Card>
@@ -127,40 +119,32 @@ class NovoFuncionario extends Component {
                   <Col>
                     <Form.Group className="mb-3" controlId="valor">
                       <Form.Label>Sobrenome</Form.Label>
-                      <Form.Control type="text" placeholder="Nome" onChange={this.handleSobrenome}/>
+                      <Form.Control type="text" placeholder="Nome" onChange={this.handleSobrenomeNome}/>
                     </Form.Group>
                   </Col>
                 </Row>
                 <Row>
                   <Form.Group>
-                    <Form.Label>CPF</Form.Label>
-                    <Form.Control type="string" placeholder="Apenas números" onChange={this.handleCPF}/>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Cargo</Form.Label>
-                      <Form.Control type="text" placeholder="Cargo" onChange={this.handleCargo}/>
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Salário</Form.Label>
-                      <Form.Control type="text" placeholder="00,00" onChange={this.handleValor}/>
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row>
-                  <Form.Group>
-                    <Form.Label>Supervisor</Form.Label>
-                    <Form.Control type="number" placeholder="ID do supervisor" onChange={this.handleId}/>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group>
-                    <Form.Label>Data de admissão</Form.Label>
+                    <Form.Label>Data de Nascimento</Form.Label>
                     <Form.Control type="text" placeholder="aaaa-mm-dd" onChange={this.handleData}/>
+                  </Form.Group>
+                </Row>
+                <Row>
+                  <Form.Group className="mb-3" controlId="valor">
+                    <Form.Label>CPF</Form.Label>
+                    <Form.Control type="text" placeholder="cpf" onChange={this.handleCPF}/>
+                  </Form.Group>
+                </Row>
+                <Row>
+                  <Form.Group className="mb-3" controlId="valor">
+                    <Form.Label>Telefone</Form.Label>
+                    <Form.Control type="text" placeholder="Telefone" onChange={this.handleTel}/>
+                  </Form.Group>
+                </Row>
+                <Row>
+                  <Form.Group className="mb-3" controlId="valor">
+                    <Form.Label>Contato Emergencia</Form.Label>
+                    <Form.Control type="text" placeholder="contato" onChange={this.handleContato}/>
                   </Form.Group>
                 </Row>
               </Container>
@@ -175,4 +159,4 @@ class NovoFuncionario extends Component {
   }
 }
 
-export default NovoFuncionario;
+export default NovoDono;

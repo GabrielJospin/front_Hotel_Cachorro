@@ -11,41 +11,41 @@ class Header extends React.Component {
       <Navbar bg="light" expand="lg">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Mercado CompreMais</Navbar.Brand>
+            <Navbar.Brand>Hotel Bom pra cachorro</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavDropdown title="Produtos" id="basic-nav-dropdown">
-                <LinkContainer to="/novoproduto">
-                  <NavDropdown.Item>Novo produto</NavDropdown.Item>
+              <NavDropdown title="Animais" id="basic-  nav-dropdown">
+                <LinkContainer to="/animal">
+                  <NavDropdown.Item>Listar Animais</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer  to="/secoes">
-                  <NavDropdown.Item>Listar Seções</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
-              <NavDropdown title="Promoções" id="basic-nav-dropdown">
-                <LinkContainer to="/novapromocao">
-                  <NavDropdown.Item>Nova Promoção</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/listarpromos">
-                  <NavDropdown.Item>Listar Promoções</NavDropdown.Item>
+                <LinkContainer to="/novoAnimal">
+                  <NavDropdown.Item>Novo Animal</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
-              <NavDropdown title="Funcionários" id="basic-nav-dropdown">
-                <LinkContainer to="/funcionarios">
-                  <NavDropdown.Item>Listar Funcionários</NavDropdown.Item>
+              <NavDropdown title="Donos" id="basic-  nav-dropdown">
+                <LinkContainer to="/dono">
+                  <NavDropdown.Item>Listar Donos</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to="/novofuncionario">
-                  <NavDropdown.Item>Novo funcionário</NavDropdown.Item>
+                <LinkContainer to="/novoDono">
+                  <NavDropdown.Item>Novo Dono</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
-              <NavDropdown title="Vendas" id="basic-nav-dropdown">
-                <LinkContainer to="/vendas">
-                  <NavDropdown.Item>Listar Vendas</NavDropdown.Item>
+               <NavDropdown title="Medicamentos" id="basic-  nav-dropdown">
+                <LinkContainer to="/medicamento">
+                  <NavDropdown.Item>Listar Medicamentos</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to="/venda/1">
-                  <NavDropdown.Item>Nova Venda</NavDropdown.Item>
+                <LinkContainer to="/novoMedicamento">
+                  <NavDropdown.Item>Novo Medicamento</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+              <NavDropdown title="Dieta" id="basic-  nav-dropdown">
+                <LinkContainer to="/dieta">
+                  <NavDropdown.Item>Listar Medicamentos</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/novoDieta">
+                  <NavDropdown.Item>Novo Medicamento</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
             </Nav>
